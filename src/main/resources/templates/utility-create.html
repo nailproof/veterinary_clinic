@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Utility</title>
+</head>
+<body>
+<div th:switch="${animals}">
+    <h2 th:case="null">No animals found!</h2>
+    <div th:case="*">
+        <h2>Animals</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="animal : ${animals}">
+                <td th:text="${animal.id}"></td>
+                <td th:text="${animal.name}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:switch="${owners}">
+    <h2 th:case="null">No owners found!</h2>
+    <div th:case="*">
+        <h2>Owners</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="owner : ${owners}">
+                <td th:text="${owner.id}"></td>
+                <td th:text="${owner.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:switch="${doctors}">
+    <h2 th:case="null">No doctors found!</h2>
+    <div th:case="*">
+        <h2>Doctors</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="doctor : ${doctors}">
+                <td th:text="${doctor.id}"></td>
+                <td th:text="${doctor.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:switch="${vaccinations}">
+    <h2 th:case="null">No vaccinations found!</h2>
+    <div th:case="*">
+        <h2>Vaccinations</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vaccination : ${vaccinations}">
+                <td th:text="${vaccination.id}"></td>
+                <td th:text="${vaccination.name}"></td>
+                <td th:text="${vaccination.price}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br/>
+<br/>
+<form action="#" th:action="@{/utilities/create}" th:object="${utility}" method="post">
+    <label for="animal_id">Animal_id</label>
+    <input type="text" th:field="*{animal_id}" id="animal_id" placeholder="animals_id">
+    <label for="owner_id">Owner_id</label>
+    <input type="text" th:field="*{owner_id}" id="owner_id" placeholder="owners_id">
+    <label for="doctor_id">Doctor_id</label>
+    <input type="text" th:field="*{doctor_id}" id="doctor_id" placeholder="doctors_id">
+    <label for="vaccination_id">Vaccination_id</label>
+    <input type="text" th:field="*{vaccination_id}" id="vaccination_id" placeholder="vaccinations_id">
+    <label for="date">Date</label>
+    <input type="text" th:field="*{date}" id="date" placeholder="date">
+    <input type="submit" value="Create Utility">
+</form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Vaccination</title>
+</head>
+<body>
+<form action="#" th:action="@{/vaccinations/create}" th:object="${vaccination}" method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="name">
+    <label for="price">Price</label>
+    <input type="text" th:field="*{price}" id="price" placeholder="price">
+    <input type="submit" value="Create Vaccination">
+</form>
+</body>
+</html>

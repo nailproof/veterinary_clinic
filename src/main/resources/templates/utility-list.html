@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Utilities</title>
+</head>
+<body>
+<div th:switch="${utilities}">
+    <h2 th:case="null">No utilities found!</h2>
+    <div th:case="*">
+        <h2>Utilities</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Animal_id</th>
+                <th>Owner_id</th>
+                <th>Doctor_id</th>
+                <th>Vaccination_id</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="utility : ${utilities}">
+                <td th:text="${utility.id}"></td>
+                <td th:text="${utility.animal_id}"></td>
+                <td th:text="${utility.owner_id}"></td>
+                <td th:text="${utility.doctor_id}"></td>
+                <td th:text="${utility.vaccination_id}"></td>
+                <td th:text="${utility.date}"></td>
+                <td><a th:href="@{delete/{id}(id=${utility.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/utilities/create">Create utility</a></p>
+    <p><a href="/main">Main page</a></p>
+</div>
+</body>
+</html>

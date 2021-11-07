@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Veterinary Clinic</title>
+</head>
+<body>
+<div th:switch="${animals}">
+    <h2 th:case="null">No animals found!</h2>
+    <div th:case="*">
+        <h2>Animals</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="animal : ${animals}">
+                <td th:text="${animal.id}"></td>
+                <td th:text="${animal.name}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:switch="${doctors}">
+    <h2 th:case="null">No doctors found!</h2>
+    <div th:case="*">
+        <h2>Doctors</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="doctor : ${doctors}">
+                <td th:text="${doctor.id}"></td>
+                <td th:text="${doctor.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:switch="${owners}">
+    <h2 th:case="null">No owners found!</h2>
+    <div th:case="*">
+        <h2>Owners</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="owner : ${owners}">
+                <td th:text="${owner.id}"></td>
+                <td th:text="${owner.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:switch="${vaccinations}">
+    <h2 th:case="null">No vaccinations found!</h2>
+    <div th:case="*">
+        <h2>Vaccinations</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vaccination : ${vaccinations}">
+                <td th:text="${vaccination.id}"></td>
+                <td th:text="${vaccination.name}"></td>
+                <td th:text="${vaccination.price}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:switch="${utilities}">
+    <h2 th:case="null">No utilities found!</h2>
+    <div th:case="*">
+        <h2>Utilities</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Animal_id</th>
+                <th>Owner_id</th>
+                <th>Doctor_id</th>
+                <th>Vaccination_id</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="utility : ${utilities}">
+                <td th:text="${utility.id}"></td>
+                <td th:text="${utility.animal_id}"></td>
+                <td th:text="${utility.owner_id}"></td>
+                <td th:text="${utility.doctor_id}"></td>
+                <td th:text="${utility.vaccination_id}"></td>
+                <td th:text="${utility.date}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br/>
+<br/>
+<td><a th:href="@{animals/list}">Animals List</a></td>
+<td><a th:href="@{owners/list}">Owners List</a></td>
+<td><a th:href="@{doctors/list}">Doctors List</a></td>
+<td><a th:href="@{vaccinations/list}">Vaccinations List</a></td>
+<td><a th:href="@{utilities/list}">Utilities List</a></td>
+</body>
+</html>

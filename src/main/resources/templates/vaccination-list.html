@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vaccinations</title>
+</head>
+<body>
+<div th:switch="${vaccinations}">
+    <h2 th:case="null">No vaccinations found!</h2>
+    <div th:case="*">
+        <h2>Vaccinations</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vaccination : ${vaccinations}">
+                <td th:text="${vaccination.id}"></td>
+                <td th:text="${vaccination.name}"></td>
+                <td th:text="${vaccination.price}"></td>
+                <td><a th:href="@{update/{id}(id=${vaccination.id})}">Edit</a></td>
+                <td><a th:href="@{delete/{id}(id=${vaccination.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/vaccinations/create">Create vaccination</a></p>
+    <p><a href="/main">Main page</a></p>
+</div>
+</body>
+</html>

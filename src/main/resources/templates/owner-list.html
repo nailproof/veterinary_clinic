@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners</title>
+</head>
+<body>
+<div th:switch="${owners}">
+    <h2 th:case="null">No owners found!</h2>
+    <div th:case="*">
+        <h2>Owners</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="owner : ${owners}">
+                <td th:text="${owner.id}"></td>
+                <td th:text="${owner.name}"></td>
+                <td><a th:href="@{update/{id}(id=${owner.id})}">Edit</a></td>
+                <td><a th:href="@{delete/{id}(id=${owner.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/owners/create">Create owner</a></p>
+    <p><a href="/main">Main page</a></p>
+</div>
+</body>
+</html>
