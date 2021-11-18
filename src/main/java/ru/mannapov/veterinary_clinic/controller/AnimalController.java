@@ -26,7 +26,7 @@ public class AnimalController {
     public String findAll(Model model) {
         List<Animal> animals = animalService.findAll();
         model.addAttribute("animals", animals);
-        return "/animal-list";
+        return "animal-list";
     }
 
     @GetMapping("/create")

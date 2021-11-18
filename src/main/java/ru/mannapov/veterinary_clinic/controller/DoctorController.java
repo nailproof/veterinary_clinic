@@ -27,7 +27,7 @@ public class DoctorController {
     public String findAll(Model model) {
         List<Doctor> doctors = doctorService.findAll();
         model.addAttribute("doctors", doctors);
-        return "/doctor-list";
+        return "doctor-list";
     }
 
     @GetMapping("/create")

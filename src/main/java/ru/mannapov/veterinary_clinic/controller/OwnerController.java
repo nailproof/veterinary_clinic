@@ -26,7 +26,7 @@ public class OwnerController {
     public String findAll(Model model) {
         List<Owner> owners = ownerService.findAll();
         model.addAttribute("owners", owners);
-        return "/owner-list";
+        return "owner-list";
     }
 
     @GetMapping("/create")
